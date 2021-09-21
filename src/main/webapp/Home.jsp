@@ -1,6 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@page import="com.DB.DBConnect"%>
 <%@page import="java.sql.*" %>
+<%@page import="com.entites.User" %>
+<% User user=(User)session.getAttribute("user-obj");
+	if(user==null){
+		session.setAttribute("err-login-msg","Please Login First");
+		response.sendRedirect("login.jsp");
+	}else{
+%>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="ISO-8859-1" />
@@ -41,10 +51,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="register.jsp">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.jsp">Login</a>
+              <a class="nav-link" href="logoutServlet">Logout</a>
             </li>
           </ul>
         </div>
@@ -54,58 +61,26 @@
     <!-- Navbar End -->
 
 
-
-
-
-    <div class="container">
-      <div class="row mt-5">
-        <div class="col-md-4 offset-md-4">
-          <div class="card">
-            <div class="card-header text-center">
-              <li class="fa fa-user-circle-o fa-2x"></li>
-              <h5>Login Page</h5>
-            </div>
-            
-            <%
-            String errMsg=(String)session.getAttribute("err-msg");
-            if(errMsg != null){%>
-					<div class="alert alert-danger" role="alert"><%= errMsg %></div>
-			<%}%>
-            
-            
-            <div class="card-body text-center">
-              <form action="loginServlet" method="post">
-                <div class="mb-4">
-                  <label for="exampleInputEmail1" class="form-label"></label>
-                    Enter Your Email address</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    name="email"
-                  />
+    <div class="container mt-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="card">
+                
+               
+                
+                    <div class="card-title text-center">
+                        <h1>User Details</h1>
+                    </div>
+                    <div class="card-body">
+                        <h3>Name : <%= user.getName()%></h3>
+                        <h3>Email : <%= user.getEmail()%></h3>
+                    </div>
+               
                 </div>
-                <div class="mb-4">
-                  <label for="exampleInputPassword1" class="form-label"
-                    >Enter Your Password</label
-                  >
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="exampleInputPassword1"
-                    name="password"
-                  />
-                </div>
-                <button type="submit" class="btn btn-success btn-block">
-                  Login
-                </button>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+
   </body>
 </html>
+<%}%>

@@ -59,8 +59,17 @@
               <li class="fa fa-user-circle-o fa-2x"></li>
               <h5>Registration Page</h5>
             </div>
+            
+            <%
+            String regMsg=(String)session.getAttribute("reg-msg");
+            String errMsg=(String)session.getAttribute("err-msg");
+            if(regMsg != null){%>
+					<div class="alert alert-success" role="alert"><%= regMsg %>  <a href="login.jsp">Login Here</a></div>
+			<%}%>
+            
+            
             <div class="card-body text-center">
-              <form>
+              <form action="registerServlet" method="post">
                 <div class="mb-4">
                     <label for="exampleInputEmail1" class="form-label"
                       > Enter Your Name</label
@@ -70,6 +79,7 @@
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
+                      name="name"
                     />
                   </div>
                 <div class="mb-4">
@@ -81,6 +91,7 @@
                     class="form-control"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
+                    name="email"
                   />
                 </div>
                 <div class="mb-4">
@@ -91,6 +102,7 @@
                     type="password"
                     class="form-control"
                     id="exampleInputPassword1"
+                    name="password"
                   />
                 </div>
                 <button type="submit" class="btn btn-success btn-block">Register</button>
