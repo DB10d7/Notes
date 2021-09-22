@@ -29,6 +29,23 @@ public class UserDAO {
 		}
 		return f;
 	}
+
+	public boolean deleteUser(int id) {
+
+		boolean f = false;
+		try {
+			String deleteQuery = "DELETE FROM user WHERE userId=?";
+			PreparedStatement ps = conn.prepareStatement(deleteQuery);
+			ps.setInt(1, user.getId());
+
+			ps.executeUpdate();
+			f = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
 	
 	public User getLogin(String email, String pass) {
 		try {

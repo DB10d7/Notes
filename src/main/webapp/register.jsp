@@ -80,6 +80,7 @@
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       name="name"
+                      required="required"
                     />
                   </div>
                 <div class="mb-4">
@@ -92,6 +93,7 @@
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     name="email"
+                    required="required"
                   />
                 </div>
                 <div class="mb-4">
@@ -103,6 +105,7 @@
                     class="form-control"
                     id="exampleInputPassword1"
                     name="password"
+                    required="required"
                   />
                 </div>
                 <button type="submit" class="btn btn-success btn-block">Register</button>
