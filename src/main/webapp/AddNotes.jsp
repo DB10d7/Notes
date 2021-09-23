@@ -28,11 +28,11 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>Notes App</title>
   </head>
-  <body style="background-image: linear-gradient(to right top, #bbc22a, #b7ae20, #b19a1a, #a98716, #9f7515); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Notes App</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -116,17 +116,19 @@
       <div class="row justify-content-center align-item-center">
         <div class="col-md-6 mt-5">
           <form class="text-center" action="addNoteServlet" method="post">
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Title</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" required="required" placeholder="Enter the Title of Your Note Here (Maximum 50 Characters)">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Body</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="body" required="required" placeholder="Enter the Body of Your Note Here (Maximum 800 Characters)"></textarea>
-            </div>
-            <input type="hidden" value="<%= user.getName() %>" name="author">
-            <input type="hidden" value="<%= user.getId() %>" name="userId">
-            <button type="submit" class="btn btn-success">Add Note</button>
+            
+	            <div class="mb-3">
+	              <h3>Title</h3>
+	              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" required="required" placeholder="Enter the Title of Your Note Here (Maximum 50 Characters)">
+	            </div>
+	            <div class="mb-3">
+	              <h3>Body</h3>
+	              <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="body" required="required" placeholder="Enter the Body of Your Note Here (Maximum 800 Characters)"></textarea>
+	            </div>
+	            <input type="hidden" value="<%= user.getName() %>" name="author">
+	            <input type="hidden" value="<%= user.getId() %>" name="userId">
+	            <button type="submit" class="btn btn-success">Add Note</button>
+	           
           </form>
         </div>
       </div>

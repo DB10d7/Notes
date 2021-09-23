@@ -28,7 +28,7 @@ public class loginServlet extends HttpServlet {
 		if(user!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user-obj",user);
-			response.sendRedirect("Home.jsp");
+			response.sendRedirect("NotesList.jsp");
 		}else {
 			HttpSession session = request.getSession();
 			session.setAttribute("err-msg","Login Unsuccessfull");

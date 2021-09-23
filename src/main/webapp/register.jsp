@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>Notes App</title>
   </head>
-  <body style="background-image: linear-gradient(to right top, #5fc22a, #7aa715, #848e12, #83761c, #7a6025);  background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
       <div class="container-fluid">

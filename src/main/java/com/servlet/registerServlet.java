@@ -36,11 +36,11 @@ public class registerServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("reg-msg","Registration Successfull");
-			response.sendRedirect("register.jsp");
+			response.sendRedirect("login.jsp");
 		}else{
 			HttpSession session = request.getSession();
 			session.setAttribute("err-msg","Registration Unsuccessfull");
-			response.sendRedirect("register.jsp");
+			response.sendRedirect("login.jsp");
 			
 		}
 	}
