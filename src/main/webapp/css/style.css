@@ -5,3 +5,8 @@
     background: #8bc34a !important;
     color: #ffff;
 }
+.navbar {
+	  position: fixed ;
+	  top: 0 ;
+	  width: 100%;
+}

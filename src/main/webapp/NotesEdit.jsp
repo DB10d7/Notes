@@ -4,13 +4,15 @@
 <%@page import="java.sql.*" %>
 <%@page import="com.entites.User" %>
 <%@page import="com.entites.Notes" %>
-<%@page import="java.util.*" %>
 <%@page import="com.DAO.NotesDAO" %>
 <% User user=(User)session.getAttribute("user-obj");
 	if(user==null){
 		session.setAttribute("err-login-msg","Please Login First");
 		response.sendRedirect("login.jsp");
 	}else{
+		int notesId= Integer.parseInt(request.getParameter("note_id"));
+		NotesDAO ob = new NotesDAO(DBConnect.getConnection());
+		Notes note=ob.getDataById(notesId);
 %>
 
 <!DOCTYPE html>
@@ -114,91 +116,24 @@
     </nav>
 
     <!-- Navbar End -->
-	<%
-	String notesUpdateMsg=(String)session.getAttribute("notes-update-msg");
-		if (notesUpdateMsg != null) {
-	%>
-	<div class="alert alert-success text-center" role="alert"><%=notesUpdateMsg%></div>
-	<%
-	session.removeAttribute("notes-update-msg");
-	}
-	%>
-	<%
-	String errNotesUpdateMsg=(String)session.getAttribute("err-notes-update-msg");
-		if (errNotesUpdateMsg != null) {
-	%>
-	<div class="alert alert-danger text-center" role="alert"><%=errNotesUpdateMsg%></div>
-	<%
-	session.removeAttribute("err-notes-update-msg");
-	}
-	%>
-	<%
-	String notesDeleteMsg=(String)session.getAttribute("notes-delete-msg");
-		if (notesDeleteMsg != null) {
-	%>
-	<div class="alert alert-success text-center" role="alert"><%=notesDeleteMsg%></div>
-	<%
-	session.removeAttribute("notes-delete-msg");
-	}
-	%>
-	<%
-	String errNotesDeleteMsg=(String)session.getAttribute("err-notes-delete-msg");
-		if (errNotesDeleteMsg != null) {
-	%>
-	<div class="alert alert-danger text-center" role="alert"><%=errNotesDeleteMsg%></div>
-	<%
-	session.removeAttribute("err-notes-delete-msg");
-	}
-	%>
-	<%
-	String notesAddMsg=(String)session.getAttribute("notes-add-msg");
-		if (notesAddMsg != null) {
-	%>
-	<div class="alert alert-success text-center" role="alert"><%=notesAddMsg%></div>
-	<%
-	session.removeAttribute("notes-add-msg");
-	}
-	%>
-	<%
-	String errNotesAddMsg=(String)session.getAttribute("err-notes-add-msg");
-		if (errNotesAddMsg != null) {
-	%>
-	<div class="alert alert-danger text-center" role="alert"><%=errNotesAddMsg%></div>
-	<%
-	session.removeAttribute("err-notes-add-msg");
-	}
-	%>
+	
 	<div class="container">
-      <h2 class="text-center">ALL NOTES</h2>
-      
-      <div class="row">
-				<%
-					NotesDAO ob = new NotesDAO(DBConnect.getConnection());
-					ArrayList<Notes> note = ob.getData(user.getId());
-					for (Notes no : note) {
-					%><div class="col-md-6">
-						<div class="card mt-3">
-							<div class="card-body p-4">
-								<h5 class="card-title text-center"><%=no.getTitle()%></h5>
-								<p><%=no.getBody()%></p>
-								<p>
-									<b class="text-success">Published By: <span
-										class="text-primary"> <%=user.getName()%>
-									</span></b>
-								</p>
-								<p>
-									<b class="text-success">Published Date: <span
-										class="text-primary"> <%=no.getnDate()%>
-									</span></b>
-								</p>
-								<div class="container text-center mt-2">
-									<a href="NotesEdit.jsp?note_id=<%= no.getId() %>" class="btn btn-primary">Edit</a> 
-									<a href="NotesDeleteServlet?note_id=<%= no.getId() %>" class="btn btn-danger">Delete</a>
-								</div>
-							</div>
-						</div>
-					</div>
-			<%}%>
+      <div class="row justify-content-center align-item-center">
+        <div class="col-md-6 mt-5">
+          <form class="text-center" action="notesEditServlet" method="post">
+          <input type="hidden" value="<%= notesId %>" name="notesId">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Title</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" required="required" value=" <%= note.getTitle() %> " placeholder="Enter the Title of Your Note Here">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Body</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="body" required="required" placeholder="Enter the Body of Your Note Here"><%= note.getBody() %></textarea>
+            </div>
+       
+            <button type="submit" class="btn btn-success">Add Note</button>
+          </form>
+        </div>
       </div>
     </div>
 

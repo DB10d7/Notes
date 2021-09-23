@@ -32,10 +32,14 @@ public class addNoteServlet extends HttpServlet {
 		if (f) {
 
 			System.out.println("Note Created");
-			response.sendRedirect("Home.jsp");
+			HttpSession session=request.getSession();
+			session.setAttribute("notes-add-msg","Your Note Added Successfully...");
+			response.sendRedirect("NotesList.jsp");
 		} else {
 			System.out.println("Note Not Created");
-			response.sendRedirect("Home.jsp");
+			HttpSession session=request.getSession();
+			session.setAttribute("err-notes-add-msg","Your Note is Not Added...Its too Long");
+			response.sendRedirect("NotesList.jsp");
 
 		}
 	}

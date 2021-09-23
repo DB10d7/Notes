@@ -50,7 +50,7 @@
               <a class="nav-link" href="AddNotes.jsp">AddNotes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">NotesList</a>
+              <a class="nav-link" href="NotesList.jsp">NotesList</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -118,11 +118,11 @@
           <form class="text-center" action="addNoteServlet" method="post">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Title</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" required="required" placeholder="Enter the Title of Your Note Here">
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" required="required" placeholder="Enter the Title of Your Note Here (Maximum 50 Characters)">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Body</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="body" required="required" placeholder="Enter the Body of Your Note Here"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="body" required="required" placeholder="Enter the Body of Your Note Here (Maximum 800 Characters)"></textarea>
             </div>
             <input type="hidden" value="<%= user.getName() %>" name="author">
             <input type="hidden" value="<%= user.getId() %>" name="userId">

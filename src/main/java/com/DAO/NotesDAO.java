@@ -66,7 +66,7 @@ public class NotesDAO {
 			
 			
 		}catch(Exception e){
-			
+			e.printStackTrace();
 		}
 		
 		
@@ -76,32 +76,70 @@ public class NotesDAO {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public Notes getDataById(int notesId) {
+		try {
+			
+			String que="select * from notes where notesId=? ";
+			PreparedStatement ps = conn.prepareStatement(que);
+			ps.setInt(1, notesId);
+			
+			ResultSet rs= ps.executeQuery();
+			if(rs.next()) {
+				note=new Notes();
+				note.setId(rs.getInt(1));
+				note.setTitle(rs.getString(2));
+				note.setBody(rs.getString(3));
+				
+				
+			}
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return note;
+		
+	}
+	public boolean notesEdit(int notesId,String title,String body) {
+
+		boolean f = false;
+		try {
+			String qu = "update notes set title=?,body=? where notesId=?";
+			PreparedStatement ps = conn.prepareStatement(qu);
+			ps.setString(1, title);
+			ps.setString(2, body);
+			ps.setInt(3, notesId);
+			
+			
+			int i=ps.executeUpdate();
+			if(i==1) {
+				f = true;	
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+	public boolean deleteNotes(int notesId) {
+
+		boolean f = false;
+		try {
+			String que="delete from notes where notesId=? ";
+			PreparedStatement ps = conn.prepareStatement(que);
+			ps.setInt(1, notesId);
+			
+			
+			int i=ps.executeUpdate();
+			if(i==1) {
+				f = true;	
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
 	
 	
 }

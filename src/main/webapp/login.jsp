@@ -81,8 +81,7 @@
               <form action="loginServlet" method="post">
                 <div class="mb-4">
                   <label for="exampleInputEmail1" class="form-label"></label>
-                    Enter Your Email address</label
-                  >
+                    Enter Your Email address</label>
                   <input
                     type="email"
                     class="form-control"
