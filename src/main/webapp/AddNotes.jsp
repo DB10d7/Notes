@@ -45,6 +45,14 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="AddNotes.jsp">AddNotes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">NotesList</a>
+            </li>
+          </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" data-bs-toggle="modal"
@@ -118,7 +126,7 @@
             </div>
             <input type="hidden" value="<%= user.getName() %>" name="author">
             <input type="hidden" value="<%= user.getId() %>" name="userId">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-success">Add Note</button>
           </form>
         </div>
       </div>

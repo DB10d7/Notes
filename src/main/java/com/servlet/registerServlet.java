@@ -32,7 +32,7 @@ public class registerServlet extends HttpServlet {
 		UserDAO dao= new UserDAO(DBConnect.getConnection()); 
 		boolean f= dao.userRegister(user);
 		
-		if(true) {
+		if(f) {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("reg-msg","Registration Successfull");

@@ -70,8 +70,12 @@
             String errMsg=(String)session.getAttribute("err-msg");
             if(errMsg != null){%>
 					<div class="alert alert-danger" role="alert"><%= errMsg %></div>
-			<%}%>
-            
+			<% session.removeAttribute("err-msg"); }%>
+            <%
+            String logoutMsg=(String)session.getAttribute("logoutMsg");
+            if(logoutMsg != null){%>
+					<div class="alert alert-success" role="alert"><%= logoutMsg %></div>
+			<% session.removeAttribute("logoutMsg"); }%>
             
             <div class="card-body text-center">
               <form action="loginServlet" method="post">

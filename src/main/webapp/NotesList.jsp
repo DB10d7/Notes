@@ -3,6 +3,9 @@
 <%@page import="com.DB.DBConnect"%>
 <%@page import="java.sql.*" %>
 <%@page import="com.entites.User" %>
+<%@page import="com.entites.Notes" %>
+<%@page import="java.util.*" %>
+<%@page import="com.DAO.NotesDAO" %>
 <% User user=(User)session.getAttribute("user-obj");
 	if(user==null){
 		session.setAttribute("err-login-msg","Please Login First");
@@ -45,12 +48,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav mb-2 mb-lg-0">
+          <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" href="AddNotes.jsp">AddNotes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="NotesList.jsp">NotesList</a>
+              <a class="nav-link" href="#">NotesList</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -112,6 +115,38 @@
 
     <!-- Navbar End -->
 
+	<div class="container">
+      <h2 class="text-center">ALL NOTES</h2>
+      <div class="row">
+				<%
+					NotesDAO ob = new NotesDAO(DBConnect.getConnection());
+					ArrayList<Notes> note = ob.getData(user.getId());
+					for (Notes no : note) {
+					%><div class="col-md-6">
+						<div class="card mt-3">
+							<div class="card-body p-4">
+								<h5 class="card-title text-center"><%=no.getTitle()%></h5>
+								<p><%=no.getBody()%></p>
+								<p>
+									<b class="text-success">Published By: <span
+										class="text-primary"> <%=user.getName()%>
+									</span></b>
+								</p>
+								<p>
+									<b class="text-success">Published Date: <span
+										class="text-primary"> <%=no.getnDate()%>
+									</span></b>
+								</p>
+								<div class="container text-center mt-2">
+									<a href="edit.jsp?note_id=<%= no.getId() %>" class="btn btn-primary">Edit</a> <a
+										href="DeleteServlet?note_id=" class="btn btn-danger">Delete</a>
+								</div>
+							</div>
+						</div>
+					</div>
+			<%}%>
+      </div>
+    </div>
 
   </body>
 </html>
