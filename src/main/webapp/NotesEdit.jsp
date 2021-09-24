@@ -37,7 +37,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-custom ">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Notes App</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -123,7 +123,7 @@
           <form class="text-center" action="notesEditServlet" method="post">
           <input type="hidden" value="<%= notesId %>" name="notesId">
             <div class="mb-3">
-              <h3>Title</h3>h3>
+              <h3>Title</h3>
               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" required="required" value=" <%= note.getTitle() %> " placeholder="Enter the Title of Your Note Here">
             </div>
             <div class="mb-3">
@@ -131,7 +131,7 @@
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" name="body" required="required" placeholder="Enter the Body of Your Note Here"><%= note.getBody() %></textarea>
             </div>
        
-            <button type="submit" class="btn btn-success">Add Note</button>
+            <button type="submit" class="btn btn-success">Update</button>
           </form>
         </div>
       </div>
