@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <webapp>
   <welcome-file-list>
-    <welcome-file>
-       index.jsp
-    </welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
 </webapp>
