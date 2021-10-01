@@ -8,7 +8,7 @@ public class DBConnect {
 		try {
 			if(conn==null) {
 				Class.forName("com.mysql.jdbc.Driver");
-				conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/notesuser","root","packetprep@123");
+				conn=DriverManager.getConnection("jdbc:mysql://uhh4giryyv2a3ka9:TBgi0GiJ9FHrf7WwqmH9@bz3cealx25kcege6tkew-mysql.services.clever-cloud.com:3306/bz3cealx25kcege6tkew","uhh4giryyv2a3ka9","TBgi0GiJ9FHrf7WwqmH9");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
